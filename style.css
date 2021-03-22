@@ -1,0 +1,35 @@
+html{
+    font-family: 'Indie Flower', cursive;
+    background-color: salmon;
+}
+  h1{
+      text-align: center;
+    font-size: 50px;
+    color:white; 
+    background-color: lightseagreen;  
+    border-radius: 35px;
+    padding:10px;
+  }
+  h2{
+      font: size 40px; ;
+  }
+ 
+  #header1{
+    text-align: center;
+  }
+  img{
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 300px;
+    
+  }
+ 
+  footer{
+    font-size: 30px;
+    color: aliceblue;
+    text-align: center;
+  }
+  ul{
+      font-size: 25px;
+  }
+  
