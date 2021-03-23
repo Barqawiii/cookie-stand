@@ -1,389 +1,150 @@
 'use strict';
 
+//////////  (this array is global)
+let workingHours=['6:00 am','7:00 am','8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm'];
+//////////  (this function give a random number between min and max )
 function getRandomInt(min, max) {
 
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min+1) + min);
 }
 
 
-//eclare an empty array AvgCookiesSales >> [] --- to push the values to this array then render them
-// declare a function getAvg : function () >> loop through the time array >>
-// Math.ceil(getRandomNumber(this.min,this.max)*Avgcookies)
+/// here we create a constractor  !!! :D
+function Salmon(location,min,max,avgCookiesPerSale) {
+  this.location=location;
+  this.min=min;
+  this.max=max;
+  this.avgCookiesPerSale=avgCookiesPerSale;
+  this.totalCookies=0;
+  this.randomCustomer=[];
+  this.numCookiesPerho=[];
+  this.totalEachLocation=0;
+  this.totalEachDay=0;
+}
 
-let workingHours=['6 am','7 am','8 am','9 am','10 am','11 am','12 pm','1 pm','2 pm','3 pm','4 pm','5 pm','6 pm','7 pm'];
+/// here is prototype method it gives a random number of customers !!! :D
+Salmon.prototype.getRandomCustomer=function () {
 
-const Seattle ={
-  location:'Seattle',
-  randomFinal:0,
-  min:23,
-  max:65,
-  avgCookiesPerSale:6.3,
-  totalCookies:0,
-  numOfCustomerPerHour:[],
-  amountPurchEachHour:[],
+  for(let i=0;i<workingHours.length;i++){
+    this.randomCustomer.push(getRandomInt(this.min,this.max));
+  }
+};
+// here is prototype method it give us how many cookies we sell each hour !!! :D
+Salmon.prototype.numCookiesPerhour=function () {
+  for(let i=0;i<workingHours.length;i++){
 
-
-  getCustomerNumber: function() {
-
-    for(let i=0;i<workingHours.length;i++){
-      this.randomFinal=getRandomInt(this.min,this.max);
-      this.numOfCustomerPerHour.push(this.randomFinal);
-
-    }
-  },
-  calcAmountCookiesPerhour: function() {
-    for(let i=0;i<workingHours.length;i++){
-      const perHour=Math.ceil(this.numOfCustomerPerHour[i]*this.avgCookiesPerSale);
-      this.amountPurchEachHour.push(perHour);
-      this.totalCookies=perHour+this.totalCookies;
-
-    }
-  },
-
-  displayData:function () {
-    const container=document.getElementById('location');
-    //<h2></h2>
-    // <ul>
-    //         <li>6 am</li>
-    //         <li>7 am</li>
-    //         <li>8 am</li>
-    //         <li>9 am</li>
-    //         <li>10 am</li>
-    //         <li>11 am</li>
-    //         <li>12 pm</li>
-    //         <li>1 pm</li>
-    //         <li>2 pm</li>
-    //         <li>3 pm</li>
-    //         <li>4 pm</li>
-    //         <li>5 pm</li>
-    //         <li>6 pm</li>
-    //         <li>7 pm</li>
-    //         <li>total</li>
-    //     </ul> -->
-
-
-    const h2El=document.createElement('h2');
-    container.appendChild(h2El);
-    h2El.textContent=this.location;
-
-    const ulEl=document.createElement('ul');
-    container.appendChild(ulEl);
-    for(let i=0;i<workingHours.length;i++){
-      const liEl=document.createElement('li');
-      ulEl.appendChild(liEl);
-      liEl.textContent=`${workingHours[i]} ${this.amountPurchEachHour[i]} cookies`;
-    }
-    const liEl=document.createElement('li');
-    ulEl.appendChild(liEl);
-    liEl.textContent=`the total is ${this.totalCookies}`;
+    let perHour=this.randomCustomer[i]*this.avgCookiesPerSale;
+    this.numCookiesPerho.push(Math.floor(perHour));
+    // here the TOTAL of cookies per day !!:P
+    this.totalCookies+=this.numCookiesPerho[i];
+    console.log(this.totalCookies);
 
   }
 };
 
+//  1-Create the element
+//  2-append the element to it's parents
+//  3-add text content to the element || attributes
+///  (THE HEADER OF TABLE ) !!! :D /////////////////////////////////////////////////////////
+let displayHeader=function () {
+  let container=document.getElementById('location');
+  // const tableEl=document.createElement('table');
 
-Seattle.getCustomerNumber();
-Seattle.calcAmountCookiesPerhour();
-Seattle.displayData();
+  const trEl=document.createElement('tr'); // <tr>
+  let thEl=document.createElement('th');// <th>
+  thEl.textContent= ' '; //
+  trEl.appendChild(thEl);// </th>
+  for (let col=0; col<=workingHours.length-1; col++){//
+    thEl=document.createElement('th');//<th>
+    thEl.textContent=workingHours[col];//
+    trEl.appendChild(thEl);//</th>
+  }//
+  thEl=document.createElement('th');//<th> --> last elemnt on header
+  thEl.textContent='Daily location total';//
+  trEl.appendChild(thEl);
+  container.appendChild(trEl);//</tr>
+  // container.appendChild(tableEl);// </table>
 
-
-//////////////////   (location number 2)   //////////////////////////////////////////////////////////////////////////////////
-
-const tokyo ={
-  location:'tokyo',
-  randomFinal:0,
-  min:3,
-  max:24,
-  avgCookiesPerSale:1.2,
-  totalCookies:0,
-  numOfCustomerPerHour:[],
-  amountPurchEachHour:[],
-
-
-  getCustomerNumber: function() {
-
-    for(let i=0;i<workingHours.length;i++){
-      this.randomFinal=getRandomInt(this.min,this.max);
-      this.numOfCustomerPerHour.push(this.randomFinal);
-
-    }
-  },
-  calcAmountCookiesPerhour: function() {
-    for(let i=0;i<workingHours.length;i++){
-      const perHour=Math.ceil(this.numOfCustomerPerHour[i]*this.avgCookiesPerSale);
-      this.amountPurchEachHour.push(perHour);
-      this.totalCookies=perHour+this.totalCookies;
-
-    }
-  },
-
-  displayData:function () {
-    const container=document.getElementById('location');
-    //<h2></h2>
-    // <ul>
-    //         <li>6 am</li>
-    //         <li>7 am</li>
-    //         <li>8 am</li>
-    //         <li>9 am</li>
-    //         <li>10 am</li>
-    //         <li>11 am</li>
-    //         <li>12 pm</li>
-    //         <li>1 pm</li>
-    //         <li>2 pm</li>
-    //         <li>3 pm</li>
-    //         <li>4 pm</li>
-    //         <li>5 pm</li>
-    //         <li>6 pm</li>
-    //         <li>7 pm</li>
-    //         <li>total</li>
-    //     </ul> -->
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    const h2El=document.createElement('h2');
-    container.appendChild(h2El);
-    h2El.textContent=this.location;
 
-    const ulEl=document.createElement('ul');
-    container.appendChild(ulEl);
-    for(let i=0;i<workingHours.length;i++){
-      const liEl=document.createElement('li');
-      ulEl.appendChild(liEl);
-      liEl.textContent=`${workingHours[i]} ${this.amountPurchEachHour[i]} cookies`;
-    }
-    const liEl=document.createElement('li');
-    ulEl.appendChild(liEl);
-    liEl.textContent=`the total is ${this.totalCookies}`;
+/// here is prototype method FOR (THE TABLE ) !!! :D //////////////////////////////////////////////////////////////////
+Salmon.prototype.displayTable=function () {
+  let container=document.getElementById('location');
+  // const tableEl=document.createElement('table');//<table>
+  const trEl=document.createElement('tr');//<tr>
+  let tdEl=document.createElement('td');//<td>
+  tdEl.textContent=this.location;//
+  trEl.appendChild(tdEl);//</td>
+  for (let col=0; col<workingHours.length;col++) {//
+    tdEl=document.createElement('td');//
+    tdEl.textContent = this.numCookiesPerho[col]; //
+    trEl.appendChild(tdEl);//
+    this.totalEachLocation += this.numCookiesPerho[col];//
+  }
+
+  trEl.appendChild(tdEl);//<td>
+  const tdEl2=document.createElement('td');
+  tdEl2.textContent=this.totalEachLocation;
+  trEl.appendChild(tdEl2);
+
+  container.appendChild(trEl);//</tr>
+  // container.appendChild(tableEl);//</table>
+
+
+};
+
+/////////////////////////////////////////////////////////////////////////
+let displayFooter=function (){
+  let container=document.getElementById('location');
+  // const tableEl=document.createElement('table');//table>
+  const trEl = document.createElement('tr');//<tr>
+  let tdEl = document.createElement('td');//<td>
+  tdEl.textContent = 'Totals';
+  trEl.appendChild(tdEl);
+  for (let i = 0; i < workingHours.length; i++) {
+    tdEl = document.createElement('td');
+    // tdEl.textContent =Math.ceil();
+    trEl.appendChild(tdEl);
 
   }
+  tdEl = document.createElement('td');
+  // tdEl.textContent = totalOfTotals();
+  trEl.appendChild(tdEl);//</td>
+  container.appendChild(trEl);//</tr>
+  // container.appendChild(tableEl);//</table>
 };
 
 
-tokyo.getCustomerNumber();
-tokyo.calcAmountCookiesPerhour();
-tokyo.displayData();
+const Seattle=new Salmon('Seattle',23,65,6.3);
+const Tokyo=new Salmon('Tokyo',3,24,1.2);
+const Dubai=new Salmon('Dubai',11,38,3.7);
+const Paris=new Salmon('Paris',20,38,2.3);
+const Lima=new Salmon('Lima',2,16,4.6);
+displayHeader();
 
-///////////////////////////     (location number 3)    //////////////////////////////////////////////////////////////////////////////////////
-const dubai ={
-  location:'dubai',
-  randomFinal:0,
-  min:11,
-  max:38,
-  avgCookiesPerSale:3.7,
-  totalCookies:0,
-  numOfCustomerPerHour:[],
-  amountPurchEachHour:[],
+Seattle.getRandomCustomer();
+Seattle.numCookiesPerhour();
+Seattle.displayTable();
 
+Tokyo.getRandomCustomer();
+Tokyo.numCookiesPerhour();
+Tokyo.displayTable();
 
-  getCustomerNumber: function() {
+Dubai.getRandomCustomer();
+Dubai.numCookiesPerhour();
+Dubai.displayTable();
 
-    for(let i=0;i<workingHours.length;i++){
-      this.randomFinal=getRandomInt(this.min,this.max);
-      this.numOfCustomerPerHour.push(this.randomFinal);
+Paris.getRandomCustomer();
+Paris.numCookiesPerhour();
+Paris.displayTable();
 
-    }
-  },
-  calcAmountCookiesPerhour: function() {
-    for(let i=0;i<workingHours.length;i++){
-      const perHour=Math.ceil(this.numOfCustomerPerHour[i]*this.avgCookiesPerSale);
-      this.amountPurchEachHour.push(perHour);
-      this.totalCookies=perHour+this.totalCookies;
+Lima.getRandomCustomer();
+Lima.numCookiesPerhour();
+Lima.displayTable();
 
-    }
-  },
-
-  displayData:function () {
-    const container=document.getElementById('location');
-    //<h2></h2>
-    // <ul>
-    //         <li>6 am</li>
-    //         <li>7 am</li>
-    //         <li>8 am</li>
-    //         <li>9 am</li>
-    //         <li>10 am</li>
-    //         <li>11 am</li>
-    //         <li>12 pm</li>
-    //         <li>1 pm</li>
-    //         <li>2 pm</li>
-    //         <li>3 pm</li>
-    //         <li>4 pm</li>
-    //         <li>5 pm</li>
-    //         <li>6 pm</li>
-    //         <li>7 pm</li>
-    //         <li>total</li>
-    //     </ul> -->
+displayFooter();
 
 
-    const h2El=document.createElement('h2');
-    container.appendChild(h2El);
-    h2El.textContent=this.location;
-
-    const ulEl=document.createElement('ul');
-    container.appendChild(ulEl);
-    for(let i=0;i<workingHours.length;i++){
-      const liEl=document.createElement('li');
-      ulEl.appendChild(liEl);
-      liEl.textContent=`${workingHours[i]} ${this.amountPurchEachHour[i]} cookies`;
-    }
-    const liEl=document.createElement('li');
-    ulEl.appendChild(liEl);
-    liEl.textContent=`the total is ${this.totalCookies}`;
-
-  }
-};
-
-
-dubai.getCustomerNumber();
-dubai.calcAmountCookiesPerhour();
-dubai.displayData();
-
-
-////////////////////////////////   (location number 4)   /////////////////////////////////////////////////////////////////
-const paris ={
-  location:'paris',
-  randomFinal:0,
-  min:20,
-  max:38,
-  avgCookiesPerSale:2.3,
-  totalCookies:0,
-  numOfCustomerPerHour:[],
-  amountPurchEachHour:[],
-
-
-  getCustomerNumber: function() {
-
-    for(let i=0;i<workingHours.length;i++){
-      this.randomFinal=getRandomInt(this.min,this.max);
-      this.numOfCustomerPerHour.push(this.randomFinal);
-
-    }
-  },
-  calcAmountCookiesPerhour: function() {
-    for(let i=0;i<workingHours.length;i++){
-      const perHour=Math.ceil(this.numOfCustomerPerHour[i]*this.avgCookiesPerSale);
-      this.amountPurchEachHour.push(perHour);
-      this.totalCookies=perHour+this.totalCookies;
-
-    }
-  },
-
-  displayData:function () {
-    const container=document.getElementById('location');
-    //<h2></h2>
-    // <ul>
-    //         <li>6 am</li>
-    //         <li>7 am</li>
-    //         <li>8 am</li>
-    //         <li>9 am</li>
-    //         <li>10 am</li>
-    //         <li>11 am</li>
-    //         <li>12 pm</li>
-    //         <li>1 pm</li>
-    //         <li>2 pm</li>
-    //         <li>3 pm</li>
-    //         <li>4 pm</li>
-    //         <li>5 pm</li>
-    //         <li>6 pm</li>
-    //         <li>7 pm</li>
-    //         <li>total</li>
-    //     </ul> -->
-
-
-    const h2El=document.createElement('h2');
-    container.appendChild(h2El);
-    h2El.textContent=this.location;
-
-    const ulEl=document.createElement('ul');
-    container.appendChild(ulEl);
-    for(let i=0;i<workingHours.length;i++){
-      const liEl=document.createElement('li');
-      ulEl.appendChild(liEl);
-      liEl.textContent=`${workingHours[i]} ${this.amountPurchEachHour[i]} cookies`;
-    }
-    const liEl=document.createElement('li');
-    ulEl.appendChild(liEl);
-    liEl.textContent=`the total is ${this.totalCookies}`;
-
-  }
-};
-
-
-paris.getCustomerNumber();
-paris.calcAmountCookiesPerhour();
-paris.displayData();
-
-
-////////////////////////////////////     (location number 5)    ////////////////////////////////////////////////////////
-
-
-
-const lima ={
-  location:'lima',
-  randomFinal:0,
-  min:2,
-  max:16,
-  avgCookiesPerSale:4.6,
-  totalCookies:0,
-  numOfCustomerPerHour:[],
-  amountPurchEachHour:[],
-
-
-  getCustomerNumber: function() {
-
-    for(let i=0;i<workingHours.length;i++){
-      this.randomFinal=getRandomInt(this.min,this.max);
-      this.numOfCustomerPerHour.push(this.randomFinal);
-
-    }
-  },
-  calcAmountCookiesPerhour: function() {
-    for(let i=0;i<workingHours.length;i++){
-      const perHour=Math.ceil(this.numOfCustomerPerHour[i]*this.avgCookiesPerSale);
-      this.amountPurchEachHour.push(perHour);
-      this.totalCookies=perHour+this.totalCookies;
-
-    }
-  },
-
-  displayData:function () {
-    const container=document.getElementById('location');
-    //<h2></h2>
-    // <ul>
-    //         <li>6 am</li>
-    //         <li>7 am</li>
-    //         <li>8 am</li>
-    //         <li>9 am</li>
-    //         <li>10 am</li>
-    //         <li>11 am</li>
-    //         <li>12 pm</li>
-    //         <li>1 pm</li>
-    //         <li>2 pm</li>
-    //         <li>3 pm</li>
-    //         <li>4 pm</li>
-    //         <li>5 pm</li>
-    //         <li>6 pm</li>
-    //         <li>7 pm</li>
-    //         <li>total</li>
-    //     </ul> -->
-
-
-    const h2El=document.createElement('h2');
-    container.appendChild(h2El);
-    h2El.textContent=this.location;
-
-    const ulEl=document.createElement('ul');
-    container.appendChild(ulEl);
-    for(let i=0;i<workingHours.length;i++){
-      const liEl=document.createElement('li');
-      ulEl.appendChild(liEl);
-      liEl.textContent=`${workingHours[i]} ${this.amountPurchEachHour[i]} cookies`;
-    }
-    const liEl=document.createElement('li');
-    ulEl.appendChild(liEl);
-    liEl.textContent=`the total is ${this.totalCookies}`;
-
-  }
-};
-
-
-lima.getCustomerNumber();
-lima.calcAmountCookiesPerhour();
-lima.displayData();
