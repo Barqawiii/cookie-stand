@@ -1,6 +1,10 @@
+table, th, td {
+  border:  solid black 1px;
+ 
+}
  html{
   font-size: 20px;
-    /* font-family: 'Indie Flower', cursive; */
+     font-family: 'Indie Flower', cursive; 
     background-color: salmon;
   }
   /* h1{
@@ -33,13 +37,7 @@
   ul{
       font-size: 25px;
   } */
-  table,tr, th, td {
-    border: 1px solid black;
-    padding: 5px;
-    width: 183;
-    table-layout:fixed;
-  }
-  table {
-    border-spacing: 15px;
-  }
+  
+ 
+  
   
