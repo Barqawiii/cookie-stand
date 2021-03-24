@@ -3,22 +3,51 @@ table, th, td {
  
 }
  html{
+  
   font-size: 20px;
-     font-family: 'Indie Flower', cursive; 
-    background-color: salmon;
+     
+    background-color: lightseagreen;
   }
-  /* h1{
-      text-align: center;
-    font-size: 50px;
+ 
+  #image1{
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  header{
+    
+    background-color:  lightsalmon;
+  }
+   h1{
+    text-align: center;
+    font-size: 80px;
     color:white; 
-    background-color: lightseagreen;  
+    background-color: lightsalmon;  
     border-radius: 35px;
     padding:10px;
   }
   h2{
-      font: size 40px; ;
+    text-align: center;
+    font-size: 60px;
+    color:white; 
+    background-color:lightseagreen;  
+    border-radius: 35px;
+    padding:10px;
   }
-  */
+  body{
+    font-family: 'Indie Flower', cursive; 
+  }
+  #cover{
+    background-size: cover;
+    width: 960px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
+    
+  }
   /* #header1{
     text-align: center;
   }
@@ -28,15 +57,16 @@ table, th, td {
     margin-left: 300px;
     
   }
- 
+ */
   footer{
-    font-size: 30px;
-    color: aliceblue;
+    font-size: 40px;
+    color: rgb(0, 0, 0);
     text-align: center;
+    padding:20px;
   }
   ul{
-      font-size: 25px;
-  } */
+      font-size: 20px;
+  } 
   
  
   

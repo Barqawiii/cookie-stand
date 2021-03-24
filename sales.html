@@ -2,20 +2,62 @@
 <html lang="en">
 <head>
    
-     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Redressed&display=swap" rel="stylesheet"> 
-     <link rel="stylesheet" href="style.css"> 
-    <title>sales page</title>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Redressed&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Sales page</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <div>
+            <h1 style="font-family: 'Indie Flower', cursive; ">Welcome to Barqawi's Salmon Cookies</h1>
+          </div>
+          
+    </header>
     <main>
-        
-         <section id="location">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Barqawi’s Salmon Cookies </a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li ><a href="index.html">Home</a></li>
+                <li class="active"><a href="sales.html">Sales</a></li>
+                <li><a onclick="myFunction1()"href="#">locations</a></li>
+                <li><a onclick="myFunction2()" href="#">hours open </a></li>
+                <li><a onclick="myFunction3()" href="#">contact information </a></li>
+              </ul>
+              <!-- <button class="btn btn-danger navbar-btn">Button</button> -->
+              <!--script statemnet-->
+              <script>
+                function myFunction1() {
+                 alert("our branches :\n 1-Seattle \n 2-Tokyo\n 3- Dubai \n 4-Paris \n 5-Lima ");
+               } 
+               function myFunction2() {
+                 alert("we open from 6:00 am to 7:00 pm :D ");
+               }
+               function myFunction3() {
+                 alert("if you anything anytime just call us :D \n 00962799945745 ");
+               }
+             </script>
+               
+            </div>
+          </nav>
+          
+          <div class="w3-container">
+            <section id="location"class="w3-table-all w3-hoverable">
 
+        
+            </section> 
+          </div>
+        
          
-    
-        </section> 
         
     </main>
     <footer>
