@@ -135,3 +135,4 @@ for (let i = 0; i < hours.length; i++)
 const tableHt2 = document.createElement('th');
 tableRt.appendChild(tableHt2);
 tableHt2.textContent = seattle.totalCookiesPerDay + tokyo.totalCookiesPerDay + dubai.totalCookiesPerDay + paris.totalCookiesPerDay + lima.totalCookiesPerDay;
+
