@@ -3,15 +3,14 @@
 <head>
    
     
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Redressed&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="./style.css">
-    <title>Sales page</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Sales page</title>
 </head>
 <body>
     <header>
@@ -43,7 +42,7 @@
                  alert("we open from 6:00 am to 7:00 pm :D ");
                }
                function myFunction3() {
-                 alert("if you anything anytime just call us :D \n 00962799945745 ");
+                 alert("if you need anything anytime just call us :D \n 00962799945745 ");
                }
              </script>
                
@@ -56,9 +55,31 @@
         
             </section> 
           </div>
-        
-         
-        
+          <br><br>
+          <form id="branchForm">
+            <fieldset>
+              <legend>add new branch</legend>
+              <label for="name">Store Name:</label><br />
+              <input type="text" name="name" id="name" />
+              <br />
+              <br />
+              <label for="likes">Minum order</label><br />
+              <input type="number" name="min" id="min" />
+              <br>
+              <br>
+              <label for="max">Maximum order</label><br>
+              <input type="number" name="max" id="max" />
+
+              <br>
+              <br>
+              <label for="min">Average sales</label><br>
+              <input type="number" name="avg" id="avg" />
+              <br><br><br>
+
+
+              <input type="submit" value="add new branch" onclick="deleteFunction()"/>
+            </fieldset>
+          </form>
     </main>
     <footer>
         <script src="./app.js"></script>   
