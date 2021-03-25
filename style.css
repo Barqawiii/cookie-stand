@@ -37,7 +37,7 @@ table, th, td {
     padding:10px;
   }
   body{
-    font-family: 'Indie Flower', cursive; 
+    font-family: 'Kiwi Maru', serif;
   }
   #cover{
     background-size: cover;
@@ -68,6 +68,13 @@ table, th, td {
       font-size: 20px;
   } 
   
- 
+ #branchForm{
+   padding-left: 60px;
+   font-size: 20px;
+ }
+ #location{
+   font-size: 30px;
+  
+ }
   
   
