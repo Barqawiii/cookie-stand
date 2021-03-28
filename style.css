@@ -3,11 +3,20 @@ table, th, td {
  
 }
  html{
-  
   font-size: 20px;
-     
-    background-color: lightseagreen;
+  background-color:gray; 
   }
+
+body {
+    min-height: auto;
+    max-width:1000px;
+    background-color: papayawhip; 
+    margin: 0 auto;
+}
+main{
+  
+}
+
  
   #image1{
     
@@ -16,9 +25,15 @@ table, th, td {
     margin-right: auto;
     
   }
-  header{
+  header #first-head{
     
     background-color:  lightsalmon;
+    border-radius: 80px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  {
+    
   }
    h1{
     text-align: center;
@@ -28,14 +43,19 @@ table, th, td {
     border-radius: 35px;
     padding:10px;
   }
-  h2{
+  #products #products-1 h2,#products #products-2 h2{
     text-align: center;
-    font-size: 60px;
+    font-size: 30px;
     color:white; 
     background-color:lightseagreen;  
     border-radius: 35px;
     padding:10px;
+    width: 150px;
   }
+  #products #products-1 img{
+    width: 300px;
+  }
+  
   body{
     font-family: 'Kiwi Maru', serif;
   }
@@ -59,6 +79,8 @@ table, th, td {
   }
  */
   footer{
+    margin-top: ;
+    clear: both;
     font-size: 40px;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -73,8 +95,23 @@ table, th, td {
    font-size: 20px;
  }
  #location{
-   font-size: 30px;
+   font-size: 15px;
   
  }
   
+#products img{
+  border-radius: 50%;
+  width: 300; 
+}
+#products{
+  width: 1000px;
+  text-align: center;
   
+}
+#products h2{
+  color:lightseagreen;
+  font-size: 50px;
+  background-color: white;
+  margin:10px;
+  border: 10px;
+}
